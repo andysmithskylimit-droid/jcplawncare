@@ -1,0 +1,26 @@
+{
+  "name": "jcp-lawn-service",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Premium website for JCP Lawn Service, Rancho Cordova, CA. Residential and commercial lawn care.",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "gsap": "^3.13.0",
+    "lenis": "^1.1.13",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "three": "^0.169.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.1",
+    "vite": "^5.4.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

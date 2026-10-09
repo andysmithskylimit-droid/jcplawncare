@@ -1,0 +1,916 @@
+/* ──────────────────────────────────────────────────────────────
+   Fit-to-screen layer (loaded last).
+   On laptops and desktops every section fits inside one screen, so
+   nobody has to scroll within a section to see its content. Spacing,
+   headings and images are sized by screen HEIGHT, and long lists are
+   reflowed into columns. Phones stack content vertically, so there
+   sections simply use tighter, height-aware spacing.
+   ────────────────────────────────────────────────────────────── */
+
+:root {
+  --fit-pad: clamp(2.5rem, 7vh, 6rem);
+  --fs-h2: clamp(2.1rem, min(4.6vw, 7.6vh), 5.25rem);
+}
+
+.section {
+  padding-block: clamp(3.5rem, 9vh, 6rem);
+}
+
+@media (min-width: 960px) {
+  /* ── Shared ─────────────────────────────────────────────── */
+  .section,
+  .reviews-band,
+  .next,
+  .cta-band {
+    padding-block: var(--fit-pad);
+  }
+  .section-head {
+    gap: 0.75rem 3rem;
+    margin-bottom: clamp(1.1rem, 3.6vh, 3rem);
+  }
+  .section-title {
+    max-width: 22ch;
+  }
+  .section-intro {
+    font-size: clamp(0.95rem, 2vh, 1.15rem);
+    line-height: 1.55;
+  }
+  .cta-band__title {
+    font-size: clamp(2.1rem, min(4.8vw, 7.6vh), 5.25rem);
+  }
+
+  /* ── Home: statement ────────────────────────────────────── */
+  .statement {
+    padding-top: var(--fit-pad);
+  }
+  .statement__inner {
+    padding-bottom: var(--fit-pad);
+  }
+  .statement__text {
+    font-size: clamp(1.55rem, min(3.1vw, 5.2vh), 3.7rem);
+  }
+  .marquee {
+    padding: clamp(0.8rem, 2vh, 1.4rem) 0;
+  }
+  .marquee__item {
+    font-size: clamp(1.5rem, 4.4vh, 3rem);
+  }
+
+  /* ── Home: one crew, two kinds of property ──────────────── */
+  .aud__art {
+    aspect-ratio: auto;
+    height: clamp(105px, 19vh, 250px);
+  }
+  .aud__art .plan {
+    right: 0.75rem;
+    bottom: 0.75rem;
+    width: auto;
+    height: calc(100% - 1.5rem);
+    aspect-ratio: 4 / 3;
+    padding: 0.4rem;
+  }
+  .aud__body {
+    gap: clamp(0.45rem, 1.3vh, 1rem);
+    padding: clamp(0.9rem, 2.4vh, 2rem) clamp(1.25rem, 2vw, 2.25rem);
+  }
+  .aud__label {
+    font-size: 0.88rem;
+  }
+  .aud__title {
+    max-width: 26ch;
+    font-size: clamp(1.4rem, min(2.3vw, 4vh), 2.6rem);
+  }
+  .aud__tags li {
+    padding: 0.2rem 0.65rem;
+    font-size: 0.8rem;
+  }
+  .aud__points {
+    gap: clamp(0.2rem, 0.7vh, 0.6rem);
+    margin-bottom: 0.25rem;
+    font-size: clamp(0.88rem, 1.9vh, 1rem);
+    line-height: 1.45;
+  }
+  .aud__points li::before {
+    top: 0.68em;
+  }
+
+  /* ── Home: recent work (one large photo + eight small, two rows) ── */
+  .work-grid--feature {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    grid-auto-rows: clamp(105px, 21vh, 260px);
+  }
+  .work-grid--feature .work-tile__btn {
+    aspect-ratio: auto;
+  }
+
+  /* ── Home: visit checklist ──────────────────────────────── */
+  .standard__head::after {
+    aspect-ratio: auto;
+    height: clamp(130px, 27vh, 330px);
+    margin-top: clamp(1rem, 2.6vh, 2rem);
+  }
+  .standard__head .section-intro {
+    margin-top: 0.9rem;
+  }
+  .check {
+    gap: 1rem;
+    padding: clamp(0.45rem, 1.35vh, 1rem) 0;
+  }
+  .check__box {
+    width: 2rem;
+    height: 2rem;
+  }
+  .check__box svg {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+  .check__text {
+    padding-top: 0.15rem;
+    font-size: clamp(1.05rem, min(1.8vw, 2.9vh), 1.6rem);
+  }
+
+  /* ── How it works (home and commercial) ─────────────────── */
+  .process__list {
+    gap: clamp(1.1rem, 3.4vh, 3rem);
+  }
+  .process .section-intro {
+    margin-top: 0.9rem;
+  }
+  .process__call {
+    margin-top: 1.25rem;
+    font-size: clamp(1.5rem, 4vh, 2.6rem);
+  }
+  .step__num {
+    font-size: clamp(2.4rem, 6.4vh, 4.6rem);
+  }
+  .step__title {
+    margin-bottom: 0.3rem;
+    font-size: clamp(1.4rem, min(2.5vw, 4.2vh), 2.7rem);
+  }
+  .step__text {
+    font-size: clamp(0.9rem, 1.9vh, 1.02rem);
+  }
+
+  /* ── Home: tools ────────────────────────────────────────── */
+  .tool-card {
+    gap: 0.45rem;
+    padding: clamp(0.9rem, 2.3vh, 1.5rem);
+  }
+  .tool-card__art {
+    aspect-ratio: auto;
+    height: clamp(80px, 16vh, 200px);
+    margin-bottom: 0.3rem;
+    padding: 0.6rem;
+  }
+  .tool-card__title {
+    font-size: clamp(1.35rem, 3.4vh, 1.8rem);
+  }
+  .tool-card__text {
+    font-size: clamp(0.88rem, 1.9vh, 0.97rem);
+  }
+
+  /* ── Services page: each service block fits one screen ──── */
+  .svcd-list {
+    gap: clamp(2rem, 6vh, 5rem);
+  }
+  .svcd__main {
+    aspect-ratio: auto;
+    height: clamp(180px, 44vh, 520px);
+  }
+  .svcd__thumb {
+    aspect-ratio: auto;
+    height: clamp(60px, 13vh, 160px);
+  }
+  .svcd__title {
+    font-size: clamp(1.8rem, min(3.2vw, 5.6vh), 3.4rem);
+  }
+  .svcd__lede {
+    margin: 0.5rem 0 0.35rem;
+    font-size: clamp(0.98rem, 2.2vh, 1.15rem);
+    line-height: 1.4;
+  }
+  .svcd__text {
+    margin-bottom: 0.8rem;
+    font-size: clamp(0.88rem, 1.9vh, 1rem);
+    line-height: 1.5;
+  }
+  .svcd__facts {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+    margin-bottom: 0.8rem;
+    border-top: 0;
+  }
+  .svcd__facts div {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.1rem;
+    padding: 0.45rem 0 0;
+    border-top: 2px solid rgba(21, 41, 28, 0.14);
+    border-bottom: 0;
+  }
+  .svcd__facts dd {
+    font-size: 0.86rem;
+    line-height: 1.4;
+  }
+  .svcd__h3 {
+    margin-bottom: 0.35rem;
+    font-size: 0.92rem;
+  }
+  .svcd__includes {
+    margin-bottom: 0.7rem;
+  }
+  .svcd__includes li {
+    padding: 0.3rem 0.75rem;
+    font-size: 0.84rem;
+  }
+  .svcd__faq {
+    margin-bottom: 0.9rem;
+  }
+  .svcd__faq summary {
+    padding: 0.5rem 2rem 0.5rem 0;
+    font-size: 0.95rem;
+  }
+
+  /* ── Residential ────────────────────────────────────────── */
+  .plans__grid {
+    gap: 1rem;
+  }
+  .plan-card {
+    --pc-pad: clamp(0.9rem, 2.1vh, 1.4rem);
+    gap: clamp(0.3rem, 0.9vh, 0.7rem);
+    padding: var(--pc-pad) 1.2rem;
+  }
+  .plan-card::before {
+    aspect-ratio: auto;
+    height: clamp(60px, 12vh, 170px);
+    margin: calc(-1 * var(--pc-pad)) -1.2rem 0.2rem;
+  }
+  .plan-card__tag {
+    font-size: 0.82rem;
+  }
+  .plan-card__name {
+    font-size: clamp(1.4rem, 3.4vh, 2.2rem);
+  }
+  .plan-card__text {
+    font-size: clamp(0.82rem, 1.75vh, 0.95rem);
+    line-height: 1.45;
+  }
+  .cadence {
+    margin: 0.1rem 0;
+    padding: 0.45rem 0.55rem;
+  }
+  .cadence__dots {
+    gap: 2px;
+  }
+  .cadence__dots i {
+    width: 5px;
+    height: 5px;
+  }
+  .cadence__label {
+    margin-top: 0.25rem;
+    font-size: 0.74rem;
+  }
+  .plan-card__list {
+    gap: 0.15rem;
+    margin-bottom: 0.25rem;
+    font-size: 0.86rem;
+  }
+  .visit__track {
+    margin-bottom: clamp(1.25rem, 4vh, 2.5rem);
+  }
+  .visit__num {
+    margin-bottom: 0.3rem;
+    font-size: clamp(2rem, 5.4vh, 3rem);
+  }
+  .visit__title {
+    font-size: clamp(1.2rem, 3vh, 1.6rem);
+  }
+  .ba__frame {
+    aspect-ratio: auto;
+    height: clamp(260px, calc(100vh - 2 * var(--fit-pad) - 1rem), 640px);
+  }
+
+  /* ── Commercial ─────────────────────────────────────────── */
+  .ptype {
+    padding-top: clamp(0.8rem, 2.4vh, 2rem);
+    padding-bottom: clamp(0.8rem, 2.4vh, 2rem);
+  }
+  .ptype__art {
+    width: clamp(60px, 8vh, 96px);
+    height: clamp(40px, 5.4vh, 64px);
+    margin-bottom: 0.5rem;
+  }
+  .ptype__name {
+    font-size: clamp(1.2rem, 3vh, 1.75rem);
+  }
+  .ptype__need {
+    margin-bottom: 0.3rem;
+    font-size: 0.92rem;
+  }
+  .ptype__text {
+    font-size: clamp(0.84rem, 1.8vh, 0.97rem);
+    line-height: 1.45;
+  }
+  .benefits__grid {
+    gap: clamp(1.1rem, 3.4vh, 2.5rem) 3rem;
+  }
+  .benefit {
+    padding-top: 0.8rem;
+  }
+  .benefit__title {
+    font-size: clamp(1.3rem, 3.2vh, 1.9rem);
+  }
+  .benefit__text {
+    font-size: clamp(0.88rem, 1.9vh, 1rem);
+  }
+  .scope__form {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(0.8rem, 2.3vh, 1.5rem) 1.5rem;
+    align-items: start;
+  }
+  .scope__group:nth-child(1),
+  .scope__group:nth-child(4) {
+    grid-column: 1 / -1;
+  }
+  .scope__group legend {
+    margin-bottom: 0.45rem;
+    font-size: 0.92rem;
+  }
+  .scope .chips {
+    gap: 0.35rem;
+  }
+  .scope .chip {
+    padding: 0.32rem 0.75rem;
+    font-size: 0.84rem;
+  }
+  .stepper button {
+    width: 2.3rem;
+    height: 2.3rem;
+  }
+  .scope__card {
+    padding: clamp(1rem, 2.6vh, 2.25rem);
+  }
+  .scope__card-title {
+    margin-bottom: 0.6rem;
+    font-size: clamp(1.5rem, 4vh, 2.2rem);
+  }
+  .scope__rows {
+    margin-bottom: 1rem;
+  }
+  .scope__rows div {
+    padding: 0.4rem 0;
+    font-size: 0.92rem;
+  }
+
+  /* ── FAQ (residential, commercial, contact) ─────────────── */
+  .faq__head .section-intro {
+    margin-top: 0.8rem;
+  }
+  .faq__q button {
+    padding: clamp(0.5rem, 1.5vh, 1.2rem) 0;
+    font-size: clamp(0.98rem, 2.1vh, 1.25rem);
+  }
+  .faq__icon {
+    width: 1.8rem;
+    height: 1.8rem;
+  }
+  .faq__a p {
+    padding-bottom: 0.8rem;
+    font-size: 0.95rem;
+  }
+
+  /* ── Lawn guide ─────────────────────────────────────────── */
+  .doctor__options {
+    gap: 0.4rem;
+    margin: clamp(0.9rem, 2.6vh, 2rem) 0 0.6rem;
+  }
+  .dx-opt {
+    padding: clamp(0.45rem, 1.3vh, 0.9rem) 0.85rem;
+    font-size: 0.92rem;
+  }
+  .doctor__ask .section-intro {
+    margin-top: 0.8rem;
+  }
+  .seasons__tabs,
+  .grass__tabs {
+    margin-bottom: clamp(0.9rem, 3vh, 2.5rem);
+  }
+  .seasons__tab {
+    padding: 0.5rem 1.15rem;
+  }
+  .season-art {
+    max-height: 44vh;
+  }
+  .season-panel__title,
+  .grass__name {
+    font-size: clamp(1.7rem, 4.6vh, 3.3rem);
+  }
+  .season-panel__text {
+    margin-bottom: 0.9rem;
+  }
+  .season-panel__tasks {
+    gap: 0.5rem 1.25rem;
+  }
+  .season-panel__tasks li {
+    padding-top: 0.5rem;
+  }
+  .ruler {
+    max-height: 50vh;
+  }
+  .grass__height {
+    margin-bottom: 0.9rem;
+  }
+  .grass__facts div {
+    padding: 0.5rem 0;
+  }
+  .tips__grid {
+    gap: 1.5rem;
+  }
+  .tip__title {
+    font-size: clamp(1.35rem, 3.2vh, 1.9rem);
+  }
+  .patterns__copy .section-intro {
+    margin-top: 0.8rem;
+  }
+  .patterns__options {
+    gap: 0.35rem;
+    margin-top: clamp(0.8rem, 2.4vh, 2rem);
+  }
+  .pattern-btn {
+    gap: 0.75rem;
+    padding: clamp(0.35rem, 1vh, 0.85rem) 0.8rem;
+  }
+  .pattern-btn__swatch {
+    width: clamp(28px, 5vh, 44px);
+    height: clamp(28px, 5vh, 44px);
+  }
+  .pattern-btn__label {
+    font-size: clamp(1.05rem, 2.6vh, 1.4rem);
+  }
+  .pattern-btn__note {
+    font-size: 0.8rem;
+  }
+  .patterns__actions {
+    margin-top: clamp(0.8rem, 2.4vh, 2rem);
+  }
+  .patterns__lawn {
+    aspect-ratio: auto;
+    height: clamp(260px, calc(100vh - 2 * var(--fit-pad) - 2.5rem), 620px);
+  }
+  .patterns__status {
+    margin-top: 0.5rem;
+  }
+
+  /* ── Service area ───────────────────────────────────────── */
+  .area__copy .section-intro {
+    margin-top: 0.8rem;
+  }
+  .area__list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    column-gap: 1rem;
+    margin-top: clamp(0.8rem, 2.4vh, 2rem);
+  }
+  .area__list li,
+  .area__list li:first-child {
+    padding: clamp(0.3rem, 0.9vh, 0.8rem) 0;
+  }
+  .area__name {
+    font-size: clamp(1.05rem, 2.6vh, 1.45rem);
+  }
+  .area__zips {
+    font-size: 0.74rem;
+  }
+  .area__map {
+    aspect-ratio: auto;
+    height: clamp(280px, calc(100vh - 2 * var(--fit-pad)), 620px);
+  }
+
+  /* ── Contact page ───────────────────────────────────────── */
+  .contact--page {
+    padding-top: calc(var(--header-h) + clamp(0.75rem, 2.6vh, 2.5rem));
+  }
+  .contact__info .section-intro {
+    margin-top: 0.8rem;
+  }
+  .contact__list {
+    gap: clamp(0.6rem, 1.8vh, 1.6rem);
+    margin-top: clamp(0.9rem, 2.6vh, 2.5rem);
+  }
+  .contact__big {
+    font-size: clamp(1.9rem, 5vh, 3.6rem);
+  }
+  .quote {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(0.45rem, 1.4vh, 1.1rem) 1rem;
+    padding: clamp(1rem, 2.6vh, 2.5rem);
+  }
+  .quote > * {
+    grid-column: 1 / -1;
+  }
+  .quote > .field {
+    grid-column: auto;
+  }
+  .quote > .field:has(textarea) {
+    grid-column: 1 / -1;
+  }
+  .quote legend {
+    margin-bottom: 0.35rem;
+    font-size: 0.88rem;
+  }
+  .field {
+    gap: 0.2rem;
+  }
+  .field__label {
+    font-size: 0.86rem;
+  }
+  .field input {
+    padding: clamp(0.45rem, 1.2vh, 0.85rem) 0.85rem;
+  }
+  .field textarea {
+    min-height: 0;
+    height: clamp(3.4rem, 10vh, 7rem);
+    padding: 0.6rem 0.85rem;
+  }
+  .seg__opt {
+    padding: clamp(0.4rem, 1.1vh, 0.7rem) 1rem;
+  }
+  .quote .chips {
+    gap: 0.3rem;
+  }
+  .quote .chip {
+    padding: 0.28rem 0.7rem;
+    font-size: 0.82rem;
+  }
+  .quote__submit {
+    margin-top: 0.2rem;
+  }
+  .quote .btn--lg {
+    min-height: 3.1rem;
+  }
+
+  /* ── Our work page: two rows of photos, then "Show more" ── */
+  .work-page .work-grid {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+  .work-page .work-tile__btn {
+    aspect-ratio: auto;
+    height: clamp(150px, calc((100vh - 2 * var(--fit-pad) - 7.5rem) / 2), 320px);
+  }
+  .work-more {
+    margin-top: clamp(1rem, 3vh, 2.5rem);
+  }
+
+  /* ── Footer ─────────────────────────────────────────────── */
+  .footer {
+    padding-top: var(--fit-pad);
+  }
+  .footer__top {
+    gap: 1.5rem 2rem;
+  }
+  .footer__col {
+    gap: 0.3rem;
+    font-size: 0.92rem;
+  }
+  .footer__brand p {
+    margin-top: 0.8rem;
+  }
+  .footer__brand .btn {
+    margin-top: 1rem;
+  }
+  .footer__mark {
+    margin-top: clamp(1.25rem, 4vh, 4rem);
+  }
+  .footer__mark-svg {
+    max-height: 18vh;
+  }
+  .footer__bottom {
+    padding-block: 0.9rem 1.1rem;
+  }
+}
+
+/* ── Laptops and tablets in landscape: keep two-column layouts ── */
+@media (min-width: 960px) {
+  .svcd-grid {
+    grid-template-columns: 200px minmax(0, 1fr);
+    gap: clamp(1.5rem, 3.5vw, 4rem);
+  }
+  .svcd {
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  }
+  .svcd__media {
+    position: sticky;
+    max-width: none;
+  }
+  .scope__grid {
+    grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr);
+    gap: clamp(1.25rem, 3vw, 3rem);
+  }
+  /* Draft scope summary as compact wrapping chips instead of tall rows */
+  .scope__rows {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+  }
+  .scope__rows div,
+  .scope__rows div:first-child {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+    padding: 0.3rem 0.6rem;
+    border: 0;
+    border-radius: 6px;
+    background: rgba(243, 245, 238, 0.08);
+    font-size: 0.82rem;
+    line-height: 1.35;
+  }
+  .scope__rows dt {
+    font-size: inherit;
+  }
+  .scope__rows dt::after {
+    content: ':';
+  }
+  .page-hero__title {
+    max-width: 20ch;
+    font-size: clamp(2.3rem, min(5.6vw, 9vh), 6.25rem);
+  }
+  .footer__top {
+    grid-template-columns: 1.2fr 1fr 0.8fr 1.15fr 1fr;
+  }
+  .work-page .work-tile__btn {
+    height: clamp(140px, calc((100vh - 2 * var(--fit-pad) - 8.5rem) / 2), 320px);
+  }
+}
+
+/* ── Short screens (most laptops with display scaling) ── */
+@media (min-width: 960px) and (max-height: 720px) {
+  .aud__art {
+    height: clamp(80px, 14vh, 140px);
+  }
+  .aud__tags {
+    display: none;
+  }
+  .aud__body {
+    gap: 0.4rem;
+    padding: 0.8rem 1.25rem 1rem;
+  }
+  .aud__points {
+    font-size: 0.86rem;
+  }
+  .svcd__lede {
+    display: none;
+  }
+  .svcd__title {
+    margin-bottom: 0.4rem;
+  }
+  .plan-card__list {
+    display: none;
+  }
+  .plan-card::before {
+    height: clamp(56px, 10vh, 110px);
+  }
+  .pattern-btn__note {
+    display: none;
+  }
+  .ruler {
+    max-height: 42vh;
+  }
+  .scope .chip,
+  .quote .chip {
+    padding: 0.22rem 0.6rem;
+    font-size: 0.78rem;
+  }
+  .scope__form {
+    gap: 0.6rem 1.25rem;
+  }
+  .contact--page {
+    padding-top: calc(var(--header-h) + 0.5rem);
+  }
+  .field textarea {
+    height: clamp(3rem, 8vh, 5rem);
+  }
+  .field input {
+    padding-block: 0.4rem;
+  }
+}
+
+/* ── Narrow laptops and tablets in landscape (960 to 1180px wide) ── */
+@media (min-width: 960px) and (max-width: 1180px) {
+  .ptype__text,
+  .svcd__text,
+  .plan-card__text {
+    font-size: 0.82rem;
+  }
+  .svcd__facts dd {
+    font-size: 0.8rem;
+  }
+  .svcd__faq {
+    display: none;
+  }
+  .plan-card__list {
+    display: none;
+  }
+  .aud__points {
+    font-size: 0.86rem;
+  }
+}
+
+/* ── Final tightening for the last dense sections ── */
+@media (min-width: 960px) {
+  .plans__grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+  .contact__grid {
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+    gap: clamp(1.5rem, 4vw, 5rem);
+  }
+  .grass__facts div {
+    grid-template-columns: 7rem minmax(0, 1fr);
+    gap: 0.75rem;
+    font-size: 0.92rem;
+  }
+}
+@media (min-width: 960px) and (max-height: 720px) {
+  .grass__note {
+    display: none;
+  }
+  .grass__facts div {
+    padding: 0.35rem 0;
+    font-size: 0.86rem;
+  }
+  .quote {
+    gap: 0.35rem 0.9rem;
+    padding: 0.8rem 1rem;
+  }
+}
+@media (min-width: 960px) and (max-width: 1180px) {
+  .ptype__art {
+    display: none;
+  }
+  .ptype {
+    padding-top: 0.7rem;
+    padding-bottom: 0.7rem;
+  }
+  .ptype__need {
+    font-size: 0.84rem;
+  }
+  .quote {
+    gap: 0.35rem 0.9rem;
+  }
+  .grass__facts div {
+    padding: 0.35rem 0;
+    font-size: 0.84rem;
+  }
+}
+@media (min-width: 960px) and (max-height: 720px) {
+  .contact--page {
+    padding-bottom: 1.5rem;
+  }
+}
+@media (min-width: 960px) and (max-width: 1180px) {
+  .scope .chip {
+    padding: 0.22rem 0.55rem;
+    font-size: 0.78rem;
+  }
+  .scope__form {
+    gap: 0.6rem 1.1rem;
+  }
+}
+@media (min-width: 960px) and (max-width: 1180px) {
+  .scope .section-intro {
+    display: none;
+  }
+}
+
+/* Phones: long button labels wrap instead of pushing the page sideways */
+@media (max-width: 560px) {
+  .btn {
+    max-width: 100%;
+    min-height: 3rem;
+    padding-block: 0.65rem;
+    white-space: normal;
+    text-align: center;
+  }
+  .btn__label {
+    line-height: 1.25;
+  }
+  .btn__text--clone {
+    width: 100%;
+  }
+}
+@media (min-width: 960px) and (max-width: 1180px) {
+  .scope {
+    padding-block: clamp(1.5rem, 4vh, 2.5rem);
+  }
+}
+
+/* ── "One crew. Two kinds of property": full-size photo cards ── */
+.aud {
+  position: relative;
+  isolation: isolate;
+  justify-content: flex-end;
+  min-height: clamp(420px, 60vh, 640px);
+  background: var(--turf-800);
+  color: var(--chalk);
+}
+.aud::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background: var(--turf-700) center 40% / cover no-repeat;
+  transition: transform 1.2s var(--ease);
+}
+.aud--light::after {
+  background-image: url('/images/work/jcp-work-150.jpg');
+}
+.aud--dark::after {
+  background-image: url('/images/work/jcp-work-034.jpg');
+}
+.aud::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(
+    180deg,
+    rgba(10, 30, 17, 0.08) 0%,
+    rgba(10, 30, 17, 0.45) 32%,
+    rgba(10, 30, 17, 0.86) 58%,
+    rgba(10, 30, 17, 0.95) 100%
+  );
+}
+.aud:hover::after {
+  transform: scale(1.05);
+}
+/* Site-plan drawing becomes a small inset card in the top corner */
+.aud .aud__art {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: clamp(110px, 24%, 190px);
+  height: auto;
+  aspect-ratio: 4 / 3;
+  padding: 0;
+  background: none;
+}
+.aud .aud__art .plan {
+  position: static;
+  width: 100%;
+  height: 100%;
+  padding: 0.45rem;
+  border-radius: 6px;
+  background: rgba(14, 42, 24, 0.82);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  aspect-ratio: auto;
+}
+.aud .aud__body {
+  flex: 0 0 auto;
+}
+.aud .aud__label {
+  color: var(--gold);
+}
+.aud .aud__title {
+  color: var(--chalk);
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.35);
+}
+.aud .aud__points li {
+  color: rgba(243, 245, 238, 0.92);
+}
+.aud .aud__points li::before {
+  background: var(--gold);
+}
+.aud .aud__tags li {
+  border-color: rgba(243, 245, 238, 0.4);
+  background: rgba(14, 42, 24, 0.35);
+}
+.aud--light .btn--dark {
+  background: var(--chalk);
+  color: var(--turf-900);
+  --fill: var(--gold);
+}
+.aud--light .text-btn {
+  color: var(--chalk);
+}
+.aud--light .text-btn:hover {
+  color: var(--gold);
+}
+
+@media (min-width: 960px) {
+  .aud {
+    min-height: clamp(330px, 58vh, 640px);
+  }
+}
+@media (min-width: 960px) and (max-height: 720px) {
+  .aud {
+    min-height: clamp(300px, 54vh, 420px);
+  }
+  .aud .aud__art {
+    width: clamp(90px, 18%, 140px);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .aud::after {
+    transition: none;
+  }
+}
