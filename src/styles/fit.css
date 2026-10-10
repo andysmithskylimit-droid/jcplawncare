@@ -914,3 +914,282 @@
     transition: none;
   }
 }
+
+/* ── Full-size photo cards everywhere ──────────────────────────── */
+
+:root {
+  --card-shade: linear-gradient(
+    180deg,
+    rgba(10, 30, 17, 0.05) 0%,
+    rgba(10, 30, 17, 0.42) 30%,
+    rgba(10, 30, 17, 0.88) 60%,
+    rgba(10, 30, 17, 0.96) 100%
+  );
+}
+.svc,
+.tool-card,
+.plans__grid .plan-card,
+.ptypes__grid .ptype {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+/* Home: service cards (photo fills the card, text over the gradient) */
+.svc {
+  justify-content: flex-end;
+}
+.svc .svc__art {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  flex: none;
+  height: auto;
+  min-height: 0;
+  padding: 0;
+  aspect-ratio: auto;
+  background: var(--turf-700);
+}
+.svc::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--card-shade);
+  pointer-events: none;
+}
+.svc .svc__body {
+  flex: 0 0 auto;
+}
+@media (max-width: 959px), (prefers-reduced-motion: reduce) {
+  .svc {
+    min-height: 430px;
+  }
+}
+
+/* Home: tool cards */
+.tool-card {
+  justify-content: flex-end;
+  min-height: clamp(260px, 44vh, 440px);
+  background: var(--turf-800);
+}
+.tool-card:hover {
+  background: var(--turf-800);
+}
+.tool-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background: var(--turf-700) center / cover no-repeat;
+  transition: transform 1.2s var(--ease);
+}
+.tool-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--card-shade);
+}
+.tool-card:hover::after {
+  transform: scale(1.05);
+}
+.tools__grid li:nth-child(1) .tool-card::after {
+  background-image: url('/images/work/jcp-work-003.jpg');
+}
+.tools__grid li:nth-child(2) .tool-card::after {
+  background-image: url('/images/work/jcp-work-174.jpg');
+}
+.tools__grid li:nth-child(3) .tool-card::after {
+  background-image: url('/images/work/jcp-work-152.jpg');
+}
+.tool-card .tool-card__art {
+  position: absolute;
+  top: 0.9rem;
+  right: 0.9rem;
+  width: clamp(84px, 30%, 130px);
+  height: auto;
+  aspect-ratio: 16 / 10;
+  margin: 0;
+  padding: 0.45rem;
+  border-radius: 6px;
+  background: rgba(14, 42, 24, 0.82);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+}
+
+/* Residential: plan cards */
+.plans__grid .plan-card {
+  justify-content: flex-end;
+  min-height: clamp(380px, 58vh, 620px);
+  border: 0;
+  background: var(--turf-800);
+  color: var(--chalk);
+}
+.plans__grid .plan-card::before {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  height: auto;
+  margin: 0;
+  border-radius: 0;
+  aspect-ratio: auto;
+  transition: transform 1.2s var(--ease);
+}
+.plans__grid .plan-card:nth-child(1)::before {
+  background-image: url('/images/work/jcp-work-114.jpg');
+}
+.plans__grid .plan-card:nth-child(2)::before {
+  background-image: url('/images/work/jcp-work-116.jpg');
+}
+.plans__grid .plan-card:nth-child(3)::before {
+  background-image: url('/images/work/jcp-work-045.jpg');
+}
+.plans__grid .plan-card:nth-child(4)::before {
+  background-image: url('/images/work/jcp-work-061.jpg');
+}
+.plans__grid .plan-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--card-shade);
+}
+.plans__grid .plan-card:hover::before {
+  transform: scale(1.05);
+}
+.plans__grid .plan-card__tag {
+  color: var(--gold);
+}
+.plans__grid .plan-card__name {
+  color: var(--chalk);
+}
+.plans__grid .plan-card__text,
+.plans__grid .plan-card__list {
+  color: rgba(243, 245, 238, 0.88);
+}
+.plans__grid .cadence {
+  background: rgba(14, 42, 24, 0.6);
+}
+.plans__grid .cadence__dots i {
+  background: rgba(243, 245, 238, 0.16);
+}
+.plans__grid .cadence__dots i.on {
+  background: var(--stripe-light);
+}
+.plans__grid .cadence__m,
+.plans__grid .cadence__label {
+  color: rgba(243, 245, 238, 0.7);
+}
+.plans__grid .plan-card .btn--dark {
+  background: var(--chalk);
+  color: var(--turf-900);
+  --fill: var(--gold);
+}
+
+/* Commercial: property-type cards */
+.ptypes__grid {
+  gap: clamp(0.6rem, 1.2vw, 1rem);
+  border-top: 0;
+}
+.ptypes__grid .ptype {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: clamp(220px, 31vh, 320px);
+  padding: clamp(0.9rem, 2vh, 1.4rem) clamp(1rem, 1.6vw, 1.4rem);
+  border: 0;
+  border-radius: 6px;
+  background: var(--turf-800);
+  color: var(--chalk);
+}
+.ptypes__grid .ptype::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background: var(--turf-700) center / cover no-repeat;
+  transition: transform 1.2s var(--ease);
+}
+.ptypes__grid .ptype:nth-child(1)::before {
+  background-image: url('/images/work/jcp-work-056.jpg');
+}
+.ptypes__grid .ptype:nth-child(2)::before {
+  background-image: url('/images/work/jcp-work-176.jpg');
+}
+.ptypes__grid .ptype:nth-child(3)::before {
+  background-image: url('/images/work/jcp-work-173.jpg');
+}
+.ptypes__grid .ptype:nth-child(4)::before {
+  background-image: url('/images/work/jcp-work-034.jpg');
+}
+.ptypes__grid .ptype:nth-child(5)::before {
+  background-image: url('/images/work/jcp-work-061.jpg');
+}
+.ptypes__grid .ptype:nth-child(6)::before {
+  background-image: url('/images/work/jcp-work-177.jpg');
+}
+.ptypes__grid .ptype::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--card-shade);
+}
+.ptypes__grid .ptype:hover::before {
+  transform: scale(1.05);
+}
+.ptypes__grid .ptype__art {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  width: 64px;
+  height: 44px;
+  margin: 0;
+  padding: 0.3rem;
+  border-radius: 4px;
+  background: rgba(243, 245, 238, 0.9);
+}
+.ptypes__grid .ptype__name {
+  color: var(--chalk);
+}
+.ptypes__grid .ptype__need {
+  color: var(--gold);
+}
+.ptypes__grid .ptype__text {
+  color: rgba(243, 245, 238, 0.86);
+}
+
+@media (min-width: 960px) {
+  .ptypes__grid .ptype {
+    min-height: clamp(180px, 30vh, 320px);
+  }
+}
+@media (min-width: 960px) and (max-height: 720px) {
+  .tool-card {
+    min-height: clamp(220px, 40vh, 300px);
+  }
+  .plans__grid .plan-card {
+    min-height: clamp(300px, 54vh, 420px);
+  }
+  .ptypes__grid .ptype {
+    min-height: clamp(160px, 28vh, 220px);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tool-card::after,
+  .plans__grid .plan-card::before,
+  .ptypes__grid .ptype::before {
+    transition: none;
+  }
+}
+/* Keep card text together at the bottom, over the darkest part of the gradient */
+.tool-card .tool-card__title {
+  margin-top: auto;
+}
+.tool-card .tool-card__action {
+  margin-top: 0;
+}
+.plans__grid .plan-card .btn {
+  margin-top: 0.4rem;
+}
