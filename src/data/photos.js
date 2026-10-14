@@ -10,7 +10,8 @@ export const photoById = (id) => workPhotos[id - 1];
 export const servicePhotos = {
   mowing: { ids: [110, 114, 108], alt: 'Freshly mowed backyard lawn with a clean patio edge' },
   edging: { ids: [7, 115, 116], alt: 'Mowed lawn with a crisp curved concrete border' },
-  hedges: { ids: [26, 28, 22], alt: 'Tree and hedge trimming in progress' },
+  hedges: { ids: [21, 25, 28], alt: 'Trimmed hedge along a side-yard walkway' },
+  trees: { ids: [26, 27, 22], alt: 'Tree trimming in progress, with cut branches ready to haul away' },
   cleanup: { ids: [46, 45, 17], alt: 'Trailer loaded with yard debris from a clean-up' },
   aeration: { ids: [136, 195, 187], alt: 'Lawn renovation with new turf beside a prepared bed' },
   beds: { ids: [56, 61, 177], alt: 'Bark bed with a rock border' },

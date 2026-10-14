@@ -12,7 +12,7 @@ export default function ServicesPage() {
       <PageHero
         crumb="Services"
         title="Everything the lawn needs, and the beds and hedges around it."
-        intro="Eight services for homes and commercial properties. Book one, combine a few, or bundle them into a regular plan."
+        intro="Nine services for homes and commercial properties. Book one, combine a few, or bundle them into a regular plan."
         art={<ServiceArt kind="mowing" />}
       >
         <button type="button" className="btn btn--gold" onClick={() => requestQuote()}>

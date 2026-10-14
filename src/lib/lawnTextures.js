@@ -39,6 +39,8 @@ export const smoothstep = (e0, e1, x) => {
 
 export function isLight(pattern, x, y, s) {
   switch (pattern) {
+    case 'plain':
+      return true;
     case 'checker':
       return (Math.floor(x / s) + Math.floor(y / s)) % 2 === 0;
     case 'diagonal':

@@ -1,5 +1,6 @@
 import { useLayoutEffect, useRef, useState } from 'react';
 import { gsap, prefersReducedMotion } from '../lib/motion';
+import Logo from './Logo';
 
 const PASSES = 7;
 
@@ -64,10 +65,9 @@ export default function Preloader({ onComplete }) {
       </div>
       <div className="pl-brand">
         <span className="pl-brand-mask">
-          <span className="pl-brand-i pl-brand-name">JCP</span>
-        </span>
-        <span className="pl-brand-mask">
-          <span className="pl-brand-i pl-brand-sub">Lawn Service</span>
+          <span className="pl-brand-i">
+            <Logo variant="preloader" />
+          </span>
         </span>
       </div>
       <div className="pl-meta">

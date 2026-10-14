@@ -71,7 +71,7 @@ export const bladeVertex = /* glsl */ `
     float gust = (n - 0.45) * 0.8;
     float flutter = sin(uTime * 2.1 + aRand * 6.2831 + aOffset.x * 0.4) * 0.06;
     float sway = (gust + flutter) * mix(1.0, 0.25, cut);
-    float lean = (stripe * 2.0 - 1.0) * 0.16 * cut;
+    float lean = 0.0; // no striping: mowed blades stand evenly
 
     p.x += sway * hh * aScale;
     p.z += (sway * 0.4 + lean) * hh * aScale;
@@ -111,8 +111,8 @@ export const bladeFragment = /* glsl */ `
     col *= 0.84 + vRand * 0.28;
     // Gentle large-scale variation so the lawn doesn't look printed
     col *= mix(vec3(0.9, 0.94, 0.88), vec3(1.04, 1.06, 1.0), vPatch);
-    float stripeShade = mix(0.74, 1.14, vStripe);
-    col *= mix(1.0, stripeShade, vCut);
+    // Freshly cut grass reads slightly brighter (no stripe pattern)
+    col *= mix(1.0, 1.06, vCut);
     // Fresh-cut highlight right behind the mower line
     col += vec3(0.16, 0.18, 0.05) * vEdge * vCut * vH;
     // Ambient occlusion toward the root
@@ -151,7 +151,7 @@ export const groundFragment = /* glsl */ `
     float cut = smoothstep(uCutZ - 0.3, uCutZ + 0.3, vWorld.z);
     float stripe = mod(floor((vWorld.x + 1000.0) / uStripeW), 2.0);
     vec3 col = uGround;
-    col *= mix(1.0, mix(0.72, 1.18, stripe), cut);
+    col *= mix(1.0, 1.05, cut);
     col = mix(col, uFog, vFog);
     gl_FragColor = vec4(col, 1.0);
     #include <colorspace_fragment>

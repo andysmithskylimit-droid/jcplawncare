@@ -70,7 +70,7 @@ export default function PlanCards() {
                 onClick={() =>
                   requestQuote({
                     propertyType: 'Home',
-                    service: p.id === 'seasonal' || p.id === 'onetime' ? 'Clean-up' : 'Mowing & striping',
+                    service: p.id === 'seasonal' || p.id === 'onetime' ? 'Clean-up' : 'Mowing',
                     note: p.note,
                   })
                 }

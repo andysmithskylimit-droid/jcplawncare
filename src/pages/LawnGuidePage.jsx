@@ -2,7 +2,6 @@ import PageHero from '../components/PageHero';
 import LawnDoctor from '../features/LawnDoctor';
 import Seasons from '../sections/Seasons';
 import { GrassGuide, Tips } from '../features/GrassGuide';
-import PatternStudio from '../sections/PatternStudio';
 import CTABand from '../components/CTABand';
 import { Link } from '../lib/router';
 import ButtonLabel from '../components/ButtonLabel';
@@ -26,7 +25,6 @@ export default function LawnGuidePage() {
       <Seasons />
       <GrassGuide />
       <Tips />
-      <PatternStudio />
       <CTABand title="Rather leave it to us?" text="We handle the mowing, edging and seasonal work so the lawn stays right all year." />
     </>
   );

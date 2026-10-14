@@ -3,7 +3,7 @@ import { gsap, prefersReducedMotion, scrollToTarget } from '../lib/motion';
 import { company, services, serviceAreas } from '../data/content';
 import { routes } from '../data/routes';
 import { Link } from '../lib/router';
-import { LogoMark } from '../components/Logo';
+import Logo from '../components/Logo';
 
 export default function Footer() {
   const ref = useRef(null);
@@ -25,7 +25,7 @@ export default function Footer() {
     <footer className="footer" ref={ref}>
       <div className="container footer__top">
         <div className="footer__brand">
-          <LogoMark size={44} />
+          <Logo variant="footer" />
           <p>Residential and commercial lawn care in Rancho Cordova and Greater Sacramento.</p>
           <Link to="/contact" className="btn btn--gold btn--sm">
             Get a quote

@@ -18,7 +18,7 @@ export const routes = [
     name: 'Services',
     title: 'Lawn Care Services: Mowing, Edging, Hedges, Aeration & Clean-ups | JCP Lawn Service',
     description:
-      'Every JCP service explained: mowing and striping, edging, hedge and shrub care, clean-ups, aeration, bed care and sprinkler checks in Rancho Cordova and Sacramento.',
+      'Every JCP service explained: lawn mowing, edging, hedge and shrub care, tree trimming, clean-ups, aeration, bed care and sprinkler checks in Rancho Cordova and Sacramento.',
   },
   {
     path: '/residential',

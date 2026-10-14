@@ -30,7 +30,7 @@ export default function BeforeAfter() {
     canvas.current.width = W;
     canvas.current.height = H;
     const noise = buildGrain(W, H, scale);
-    store.current = { W, H, before: paintOvergrown(W, H, scale, noise), after: paintPattern(W, H, scale, noise, 'stripes') };
+    store.current = { W, H, before: paintOvergrown(W, H, scale, noise), after: paintPattern(W, H, scale, noise, 'plain') };
     draw(posRef.current);
   };
 
@@ -73,7 +73,7 @@ export default function BeforeAfter() {
             The difference one visit makes.
           </RevealText>
           <p className="section-intro">
-            Drag the handle to compare an overgrown lawn with the same lawn after a mow, edge and stripe.
+            Drag the handle to compare an overgrown lawn with the same lawn after a mow, edge and clean-up.
           </p>
           <p className="ba__note">Illustrated example.</p>
         </div>

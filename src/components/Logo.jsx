@@ -1,4 +1,6 @@
-/** Brand mark: a square lawn cut into four alternating stripes, with a gold edge line. */
+import { useLogo } from '../lib/useLogo';
+
+/** Small striped mark, kept as the favicon-style fallback when the logo image is unavailable. */
 export function LogoMark({ size = 34, className = '' }) {
   return (
     <svg className={className} width={size} height={size} viewBox="0 0 34 34" aria-hidden="true" focusable="false">
@@ -12,10 +14,26 @@ export function LogoMark({ size = 34, className = '' }) {
   );
 }
 
-export default function Logo() {
+/**
+ * The JCP Lawn Service badge (public/images/work/logo.jpg).
+ * variant: 'header' | 'footer' | 'preloader' | 'feature'
+ */
+export default function Logo({ variant = 'header' }) {
+  const logo = useLogo();
+
+  if (logo) {
+    return (
+      <span className={`logo logo--img logo--${variant}`}>
+        <img className="logo__img" src={logo.src} width={logo.w} height={logo.h} alt="JCP Lawn Service" decoding="async" />
+      </span>
+    );
+  }
+
+  if (variant === 'preloader') return <span className="pl-brand-name">JCP</span>;
+
   return (
-    <span className="logo">
-      <LogoMark />
+    <span className={`logo logo--${variant}`}>
+      <LogoMark size={variant === 'footer' ? 44 : 34} />
       <span className="logo__type">
         <span className="logo__name">JCP</span>
         <span className="logo__sub">Lawn Service</span>

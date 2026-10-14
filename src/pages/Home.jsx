@@ -6,6 +6,7 @@ import Process from '../sections/Process';
 import Standard from '../features/Standard';
 import ToolsTeaser from '../features/ToolsTeaser';
 import RecentWork from '../features/RecentWork';
+import Crew from '../features/Crew';
 import ReviewsBand from '../components/ReviewsBand';
 import CTABand from '../components/CTABand';
 
@@ -18,6 +19,7 @@ export default function Home({ ready }) {
       <Services />
       <RecentWork />
       <Standard />
+      <Crew />
       <Process />
       <ToolsTeaser />
       <ReviewsBand />

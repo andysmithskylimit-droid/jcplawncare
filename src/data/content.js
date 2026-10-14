@@ -35,12 +35,13 @@ export const hero = {
 };
 
 export const statement =
-  "A lawn is the first thing people notice about a property. Clean edges, even stripes and healthy color tell neighbors, tenants and customers that someone is paying attention. That's the job we take on, week after week, for homes and businesses across Greater Sacramento.";
+  "A lawn is the first thing people notice about a property. Clean edges, an even cut and healthy color tell neighbors, tenants and customers that someone is paying attention. That's the job we take on, week after week, for homes and businesses across Greater Sacramento.";
 
 export const marqueeItems = [
-  'Mowing & striping',
+  'Mowing',
   'Edging & trimming',
   'Hedge & shrub care',
+  'Tree trimming',
   'Leaf clean-ups',
   'Aeration & overseeding',
   'Bed care & mulch',
@@ -125,19 +126,19 @@ export const tools = [
 export const services = [
   {
     id: 'mowing',
-    option: 'Mowing & striping',
+    option: 'Mowing',
     art: 'mowing',
-    title: 'Mowing & striping',
-    summary: 'Regular cuts at the right height for your grass, finished with clean, even stripes.',
+    title: 'Lawn mowing',
+    summary: 'Regular cuts at the right height for your grass, with clippings blown off every walk and drive.',
     details:
-      'We mow on a set day each week or every other week and adjust cutting height through the year: a little lower in spring, higher through summer heat. Alternating mowing directions keeps grass upright and lays down clean stripes, and sharp blades cut the grass cleanly instead of tearing it.',
+      'We mow on a set day each week or every other week and adjust cutting height through the year: a little lower in spring, higher through summer heat. Alternating mowing direction keeps the grass growing upright, and sharp blades cut it cleanly instead of tearing it.',
     includes: ['Weekly or every-other-week visits', 'Cutting height set by season', 'Clippings blown off walks and drives'],
     frequency: 'Weekly in the growing season, every other week when growth slows',
     season: 'Year-round',
     goodFor: 'Every lawn, from small front yards to large commercial turf',
     audience: 'Homes and commercial',
     faq: [
-      { q: 'Can you mow stripes or patterns into my lawn?', a: 'Yes. Classic stripes are the default look, and we can talk through checkerboard, diagonal or diamond patterns for your lawn.' },
+      { q: 'How short do you cut the grass?', a: 'It depends on the grass type and the season. We cut a little lower in spring and raise the height through summer heat so the lawn holds moisture.' },
       { q: 'What happens to the clippings?', a: 'Clippings are blown off walks, drives and patios. On most lawns, fine clippings left on the turf return nutrients to the soil. Ask us if you prefer them bagged.' },
     ],
   },
@@ -174,7 +175,25 @@ export const services = [
     audience: 'Homes and commercial',
     faq: [
       { q: 'How often do hedges need trimming?', a: 'It depends on the plant and how formal you want it to look. Fast growers may need shaping every couple of months in the growing season.' },
-      { q: 'Do you handle large trees?', a: 'Large tree removal and high limbs are best handled by a certified arborist. Ask us about smaller pruning jobs.' },
+      { q: 'Do you trim trees too?', a: 'Yes. See tree trimming for branches over roofs, fences, walks and drives.' },
+    ],
+  },
+  {
+    id: 'trees',
+    option: 'Tree trimming',
+    art: 'hedges',
+    title: 'Tree trimming',
+    summary: 'Overgrown branches cut back from roofs, fences, walks and driveways, with every cutting hauled away.',
+    details:
+      'Trees that hang over roofs, rub against fences or block walkways become a hazard and a mess. We trim back overgrown limbs, raise low branches over walks and drives, shape small and medium trees, and clean up and haul away everything we cut.',
+    includes: ['Branches cut back from roofs and fences', 'Low limbs raised over walks and drives', 'Cuttings hauled away'],
+    frequency: 'Once or twice a year, or whenever growth gets out of hand',
+    season: 'Late fall through winter for most trees; light shaping in spring and summer',
+    goodFor: 'Backyard and street trees, fruit trees and overgrown privacy trees',
+    audience: 'Homes and commercial',
+    faq: [
+      { q: 'Do you remove whole trees?', a: 'Large removals and work near power lines are best handled by a certified arborist. Call us and we will tell you whether the job is one we take on.' },
+      { q: 'What happens to the branches?', a: 'Cut branches and debris are cleaned up and hauled away as part of the job.' },
     ],
   },
   {
@@ -279,7 +298,7 @@ export const residentialPlans = [
     name: 'Weekly',
     tagline: 'For the growing season',
     text: 'Grass grows fastest from spring through early fall. Weekly visits keep it at the right height so it never looks shaggy.',
-    includes: ['Mowing and striping', 'Edging and trimming', 'Walks and drives blown clean'],
+    includes: ['Mowing', 'Edging and trimming', 'Walks and drives blown clean'],
     cadence: [2, 2, 4, 4, 4, 4, 4, 4, 4, 4, 2, 2],
     note: 'Interested in weekly service.',
   },
@@ -288,7 +307,7 @@ export const residentialPlans = [
     name: 'Every other week',
     tagline: 'For slower-growing lawns',
     text: 'A good fit for smaller lawns, slower-growing grasses, or the cooler months when growth slows down.',
-    includes: ['Mowing and striping', 'Edging and trimming', 'Walks and drives blown clean'],
+    includes: ['Mowing', 'Edging and trimming', 'Walks and drives blown clean'],
     cadence: [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
     note: 'Interested in every-other-week service.',
   },
@@ -325,7 +344,6 @@ export const homeFaqs = [
   { q: 'Do you mow backyards too?', a: 'Yes, as long as the mower fits through the gate. Mention narrow gates or steps when you request a quote.' },
   { q: 'What if it rains on my service day?', a: "Wet grass doesn't cut cleanly, so heavy rain can move a visit by a day or two. We will let you know." },
   { q: 'Can you work around my dog?', a: 'Please keep pets inside during the visit. Crews close gates behind them, and a quick heads-up about pets is always appreciated.' },
-  { q: 'How do I get the striped look?', a: 'Stripes come from mowing in alternating directions, which bends the grass so light reflects differently. Ask for stripes with your quote.' },
   { q: 'Can I pause service while I travel?', a: 'Let us know your dates ahead of time and we will work out what makes sense for your lawn while you are away.' },
 ];
 
@@ -382,6 +400,7 @@ export const symptoms = [
   { id: 'soggy', label: 'Puddles or soggy areas', causes: ['Overwatering or a broken sprinkler head', 'Compacted soil that drains slowly'], helps: ['A sprinkler check', 'Aeration'], services: ['irrigation', 'aeration'] },
   { id: 'leaves', label: 'Leaves and debris piling up', causes: ['Fall leaf drop', 'Winter storms'], helps: ['Seasonal clean-ups', 'Regular blowing through leaf season'], services: ['cleanup'] },
   { id: 'hedges', label: 'Overgrown hedges and shrubs', causes: ['Missed shaping seasons', 'Fast-growing plants'], helps: ['Hedge shaping', 'Shrub pruning'], services: ['hedges'] },
+  { id: 'trees', label: 'Branches over the roof, fence or driveway', causes: ['Trees not trimmed in a few seasons', 'Fast growth after wet winters'], helps: ['Cutting branches back to a safe clearance', 'Raising low limbs over walks and drives'], services: ['trees'] },
 ];
 
 // Typical mowing-height ranges in inches. They vary by variety and mower type.
