@@ -17,6 +17,8 @@ export const company = {
     'https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d19003.128531502334!2d-121.3373097!3d38.5922326!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x809add0013beb947%3A0x8c410c8216d9c76f!2sJCP%20Lawn%20Service!5e1!3m2!1sen!2sin!4v1791422667406!5m2!1sen!2sin',
   // Opens the Google Business listing (reviews, directions). Derived from the place ID in the embed.
   mapsLink: 'https://maps.google.com/?cid=10106372791664756591',
+  // Optional: paste the Facebook page URL (e.g. https://www.facebook.com/...) to show a "Facebook reviews" button.
+  facebookLink: '',
   /**
    * Optional: paste a form endpoint (Formspree, Basin, Getform, your own API) to send quote
    * requests directly. When empty, the form opens the visitor's email app, pre-filled.
@@ -470,11 +472,25 @@ export const areas = [
 export const serviceAreas = areas.map((a) => a.name);
 
 /**
- * Real customer reviews. Pulled from the JCP Lawn Service Google Business listing.
+ * Real customer reviews, pulled from the JCP Lawn Service Google Business listing and Facebook page.
  * Review sections switch to a carousel automatically.
  * To add more: copy a block, paste it below, and update the fields.
+ *   Google reviews:   detail 'Google review' + rating (1–5 stars).
+ *   Facebook reviews: detail 'Facebook recommendation' + source 'facebook'
+ *                     (Facebook has no star ratings, so a "Recommends" badge shows instead).
  */
+export const reviewStats = {
+  facebookRecommendPercent: 96,
+};
+
 export const testimonials = [
+  {
+    quote:
+      "We've had horrible luck with landscapers until we came across JCP. We have a large backyard that was in desperate need of help. JCP went above and beyond: cut back the massive rose bushes, cleaned up the citrus trees, mowed, blew, trimmed, zero time wasted. Prices are fair, especially considering the work they put in. I highly recommend JCP Lawn Service.",
+    name: 'Theresa Gayner',
+    detail: 'Facebook recommendation',
+    source: 'facebook',
+  },
   {
     quote:
       'JCP Landscaping was great and affordable! I recently used Carlos and his crew to do some clean up at a listing that I have. He was very affordable and also suggested additional services that helped spruce up the place. I will absolutely be using JCP for my future landscaping needs.',
@@ -484,10 +500,17 @@ export const testimonials = [
   },
   {
     quote:
-      'I hired JCP to clean up my front and back yard after buying a house and was really pleased with the work. They did an excellent job and were affordable.',
-    name: 'Daniel',
-    detail: 'Google review',
-    rating: 5,
+      'Sent info for an estimate and heard back extremely fast. They came by within 30 minutes to check out my yard, and the job was done within a couple hours that same day: yard cleaned up, dead plants removed, everything trimmed, and mulch laid in a huge area of the back yard. Fast and friendly. Good price to boot. Great experience!',
+    name: 'Laurenne Davison',
+    detail: 'Facebook recommendation',
+    source: 'facebook',
+  },
+  {
+    quote:
+      'Carlos did an amazing job trimming my trees!! I had 4 very overgrown trees that were obstructing the roof and gutters. He is a very fast, efficient and thorough worker with very competitive rates. I highly recommend him to anyone!',
+    name: 'Heather McManus',
+    detail: 'Facebook recommendation',
+    source: 'facebook',
   },
   {
     quote: 'They did amazing!! Very quick to respond, easy to schedule, and are very fast, hard workers! Highly recommend!!',
@@ -496,16 +519,81 @@ export const testimonials = [
     rating: 5,
   },
   {
+    quote:
+      'I needed a tree cut down that was growing under my foundation and they were amazing and professional. They communicated what they were going to do, quoted a price and came exactly when they said. It is not easy finding reliable businesses, but JCP did a great job and I highly recommend them for all your landscaping needs.',
+    name: 'Alexxa Goodenough',
+    detail: 'Facebook recommendation',
+    source: 'facebook',
+  },
+  {
+    quote:
+      'I contacted Carlos to pick up household junk. He came over within 30 minutes, gave me an estimate and was back at my house to pick up within 3 hours. I really appreciate his professionalism and his urgency to get the job done.',
+    name: 'Stephanie Sheffield',
+    detail: 'Facebook recommendation',
+    source: 'facebook',
+  },
+  {
+    quote:
+      'I hired JCP to clean up my front and back yard after buying a house and was really pleased with the work. They did an excellent job and were affordable.',
+    name: 'Daniel',
+    detail: 'Google review',
+    rating: 5,
+  },
+  {
+    quote:
+      'I needed help getting my yard cleaned up so I could maintain it myself. Carlos got back to me quickly, kept me updated about his ETA, gave a fair quote, did great work and was a very kind person. Will definitely use again.',
+    name: 'Alyssa Aguilar',
+    detail: 'Facebook recommendation',
+    source: 'facebook',
+  },
+  {
+    quote:
+      'Carlos was professional, friendly and an excellent worker. He helped clean up and haul away lots of green waste from our yard for a great price, and did it quickly. We will definitely call on him for our next yard work!',
+    name: 'Annette Cardoso Sousa Schimpf',
+    detail: 'Facebook recommendation',
+    source: 'facebook',
+  },
+  {
     quote: 'Excellent work. Appreciate that Carlos checked in during the job to confirm we were on the same page. Will be calling him again next time!',
     name: 'Melanie Rowe',
     detail: 'Google review',
     rating: 5,
   },
   {
+    quote: 'Highly recommend JCP. They show up on time and get the job done. Great company with reasonable prices.',
+    name: 'Jonathan Samuel Gomez',
+    detail: 'Facebook recommendation',
+    source: 'facebook',
+  },
+  {
+    quote: 'They cleaned up my yard on short notice, and were fast and professional.',
+    name: 'Carolanne Hanck',
+    detail: 'Facebook recommendation',
+    source: 'facebook',
+  },
+  {
     quote: 'Jared came out to install a drip line in my backyard. He did a great job, was courteous, and left everything clean.',
     name: 'Summer',
     detail: 'Google review',
     rating: 4,
+  },
+  {
+    quote: 'JCP Lawn Service did a great job on my yard. They came out fast and did a great job! I would recommend them to anyone!!',
+    name: 'Sarah Walther',
+    detail: 'Facebook recommendation',
+    source: 'facebook',
+  },
+  {
+    quote: 'Very professional, affordable, outstanding work. I highly recommend JCP Lawn Service.',
+    name: 'Amy E. Rodriguez',
+    detail: 'Facebook recommendation',
+    source: 'facebook',
+  },
+  {
+    quote: 'Everything was done perfectly. Amazing people! 100% recommended.',
+    name: "Ana D'Andrea",
+    detail: 'Facebook recommendation',
+    source: 'facebook',
   },
 ];
 

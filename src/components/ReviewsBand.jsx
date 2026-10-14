@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { company, testimonials } from '../data/content';
+import { company, reviewStats, testimonials } from '../data/content';
 import ButtonLabel from './ButtonLabel';
 
 function Stars({ n = 5 }) {
@@ -14,6 +14,18 @@ function Stars({ n = 5 }) {
   );
 }
 
+/* Facebook reviews are recommend / don't recommend, with no star rating */
+function Recommends() {
+  return (
+    <span className="reviews__recommends">
+      <svg viewBox="0 0 20 20" aria-hidden="true">
+        <path d="M7.6 14.2L3.4 10l1.4-1.4 2.8 2.8 7.6-7.6 1.4 1.4z" />
+      </svg>
+      Recommends JCP
+    </span>
+  );
+}
+
 function Carousel() {
   const [i, setI] = useState(0);
   if (!testimonials.length) return null;
@@ -21,7 +33,7 @@ function Carousel() {
   const n = testimonials.length;
   return (
     <figure className="reviews__card">
-      <Stars n={t.rating || 5} />
+      {t.source === 'facebook' ? <Recommends /> : <Stars n={t.rating || 5} />}
       <blockquote className="reviews__quote">{t.quote}</blockquote>
       <figcaption className="reviews__by">
         <span className="reviews__name">{t.name}</span>
@@ -54,11 +66,19 @@ export default function ReviewsBand() {
               Ask the neighbors.
             </h2>
             <p>
-              Read what customers say about JCP Lawn Service — these reviews are straight from our Google listing.
+              Read what customers say about JCP Lawn Service — these reviews are straight from our Google listing and
+              Facebook page, where {reviewStats.facebookRecommendPercent}% of reviewers recommend us.
             </p>
-            <a className="btn btn--dark" href={company.mapsLink} target="_blank" rel="noopener noreferrer">
-              <ButtonLabel>Read our Google reviews</ButtonLabel>
-            </a>
+            <div className="reviews__actions">
+              <a className="btn btn--dark" href={company.mapsLink} target="_blank" rel="noopener noreferrer">
+                <ButtonLabel>Read our Google reviews</ButtonLabel>
+              </a>
+              {company.facebookLink && (
+                <a className="btn btn--dark" href={company.facebookLink} target="_blank" rel="noopener noreferrer">
+                  <ButtonLabel>Facebook reviews</ButtonLabel>
+                </a>
+              )}
+            </div>
           </div>
           <Carousel />
         </div>

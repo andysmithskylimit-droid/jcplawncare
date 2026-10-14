@@ -1376,6 +1376,33 @@
   fill: var(--gold);
 }
 
+/* ── Facebook "Recommends" badge (reviews carousel) ──── */
+.reviews__recommends {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  height: 1.1rem;
+  margin-bottom: 0.75rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--turf-800);
+}
+.reviews__recommends svg {
+  width: 1.1rem;
+  height: 1.1rem;
+  padding: 0.12rem;
+  border-radius: 50%;
+  background: var(--gold);
+  fill: var(--turf-900);
+}
+.reviews__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
 /* ── Footer slogan ────────────────────────────────────── */
 .footer__slogan {
   margin: 0.6rem 0 0.1rem;
@@ -1432,7 +1459,8 @@
     font-size: 0.9rem;
     line-height: 1.4;
   }
-  .reviews__stars {
+  .reviews__stars,
+  .reviews__recommends {
     margin-bottom: 0.4rem;
   }
   .reviews__nav {
