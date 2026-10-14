@@ -1,6 +1,6 @@
 import { useLayoutEffect, useRef } from 'react';
 import { gsap, prefersReducedMotion, scrollToTarget } from '../lib/motion';
-import { company, services, serviceAreas } from '../data/content';
+import { company, services, serviceAreas, slogan } from '../data/content';
 import { routes } from '../data/routes';
 import { Link } from '../lib/router';
 import Logo from '../components/Logo';
@@ -26,6 +26,8 @@ export default function Footer() {
       <div className="container footer__top">
         <div className="footer__brand">
           <Logo variant="footer" />
+          <p className="footer__slogan">{slogan.slogan}</p>
+          <p className="footer__verse">— {slogan.verseRef}</p>
           <p>Residential and commercial lawn care in Rancho Cordova and Greater Sacramento.</p>
           <Link to="/contact" className="btn btn--gold btn--sm">
             Get a quote

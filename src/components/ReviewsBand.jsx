@@ -2,6 +2,18 @@ import { useState } from 'react';
 import { company, testimonials } from '../data/content';
 import ButtonLabel from './ButtonLabel';
 
+function Stars({ n = 5 }) {
+  return (
+    <span className="reviews__stars" aria-label={`${n} out of 5 stars`}>
+      {Array.from({ length: 5 }).map((_, i) => (
+        <svg key={i} viewBox="0 0 20 20" aria-hidden="true" className={i < n ? 'is-on' : ''}>
+          <path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.2 1 5.8L10 15l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z" />
+        </svg>
+      ))}
+    </span>
+  );
+}
+
 function Carousel() {
   const [i, setI] = useState(0);
   if (!testimonials.length) return null;
@@ -9,6 +21,7 @@ function Carousel() {
   const n = testimonials.length;
   return (
     <figure className="reviews__card">
+      <Stars n={t.rating || 5} />
       <blockquote className="reviews__quote">{t.quote}</blockquote>
       <figcaption className="reviews__by">
         <span className="reviews__name">{t.name}</span>
@@ -41,8 +54,7 @@ export default function ReviewsBand() {
               Ask the neighbors.
             </h2>
             <p>
-              We would rather you hear it from the people we work for. Read what customers say about JCP Lawn Service
-              on Google.
+              Read what customers say about JCP Lawn Service — these reviews are straight from our Google listing.
             </p>
             <a className="btn btn--dark" href={company.mapsLink} target="_blank" rel="noopener noreferrer">
               <ButtonLabel>Read our Google reviews</ButtonLabel>

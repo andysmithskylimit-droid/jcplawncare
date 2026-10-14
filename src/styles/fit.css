@@ -1309,3 +1309,133 @@
     transition: none;
   }
 }
+
+/* ── Slogan section (home) ──────────────────────────────── */
+.slogan {
+  background:
+    linear-gradient(180deg, rgba(14, 42, 24, 0.92), rgba(14, 42, 24, 0.98)),
+    repeating-linear-gradient(90deg, rgba(228, 184, 66, 0.05) 0 2vw, transparent 2vw 4vw);
+  color: var(--chalk);
+  text-align: center;
+}
+.slogan__inner {
+  display: grid;
+  justify-items: center;
+  gap: clamp(0.9rem, 2.5vh, 1.75rem);
+  max-width: 60ch;
+  margin: 0 auto;
+}
+.slogan__eyebrow {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.slogan__title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(2.1rem, min(5vw, 7.6vh), 4.75rem);
+  line-height: 1;
+  letter-spacing: -0.005em;
+  text-wrap: balance;
+}
+.slogan__verse {
+  margin: 0;
+  padding-top: clamp(0.75rem, 2vh, 1.25rem);
+  border-top: 2px solid rgba(228, 184, 66, 0.45);
+}
+.slogan__verse blockquote {
+  margin: 0 0 0.4rem;
+  font-size: clamp(1rem, 2.1vh, 1.2rem);
+  font-style: italic;
+  line-height: 1.5;
+  color: rgba(243, 245, 238, 0.9);
+}
+.slogan__verse figcaption {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--gold);
+  letter-spacing: 0.05em;
+}
+
+/* ── Stars (reviews carousel) ────────────────────────── */
+.reviews__stars {
+  display: inline-flex;
+  gap: 0.25rem;
+  margin-bottom: 0.75rem;
+}
+.reviews__stars svg {
+  width: 1.1rem;
+  height: 1.1rem;
+  fill: rgba(21, 41, 28, 0.18);
+}
+.reviews__stars svg.is-on {
+  fill: var(--gold);
+}
+
+/* ── Footer slogan ────────────────────────────────────── */
+.footer__slogan {
+  margin: 0.6rem 0 0.1rem;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.15rem;
+  line-height: 1.1;
+  color: var(--chalk);
+}
+.footer__verse {
+  margin: 0 0 0.3rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--gold);
+  letter-spacing: 0.04em;
+}
+@media (min-width: 960px) and (max-height: 720px) {
+  .footer {
+    padding-top: clamp(1.5rem, 4vh, 2.5rem);
+  }
+  .footer__slogan {
+    font-size: 1rem;
+    margin-top: 0.4rem;
+  }
+  .footer__brand p:not(.footer__slogan):not(.footer__verse) {
+    display: none;
+  }
+  .footer__mark {
+    margin-top: 0.75rem;
+  }
+}
+
+/* ── Reviews carousel: fit one laptop screen with the longest quote ── */
+@media (min-width: 960px) {
+  .reviews-band .reviews {
+    align-items: center;
+  }
+  .reviews__card {
+    padding: clamp(1rem, 2.4vh, 1.75rem) clamp(1.25rem, 2.4vh, 2rem);
+  }
+  .reviews__quote {
+    font-size: clamp(0.98rem, 2vh, 1.15rem);
+    line-height: 1.5;
+  }
+}
+@media (min-width: 960px) and (max-height: 720px) {
+  .reviews-band {
+    padding-block: clamp(1.5rem, 4vh, 2.5rem);
+  }
+  .reviews__card {
+    padding: 0.9rem 1.1rem;
+  }
+  .reviews__quote {
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
+  .reviews__stars {
+    margin-bottom: 0.4rem;
+  }
+  .reviews__nav {
+    margin-top: 0.6rem;
+  }
+}

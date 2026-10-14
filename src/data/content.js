@@ -34,6 +34,17 @@ export const hero = {
   statement: ['Clean lines.', 'Every visit.'],
 };
 
+/**
+ * The slogan the company stands on. Lives in its own section on the home page and in the footer.
+ * verseText is a short modern-language paraphrase; verseRef is the citation.
+ */
+export const slogan = {
+  slogan: 'Building relationships in our community.',
+  intro: 'The slogan JCP Lawn Service stands on.',
+  verseRef: 'Matthew 6:33',
+  verseText: '"But seek first the kingdom of God and his righteousness, and all these things will be added to you."',
+};
+
 export const statement =
   "A lawn is the first thing people notice about a property. Clean edges, an even cut and healthy color tell neighbors, tenants and customers that someone is paying attention. That's the job we take on, week after week, for homes and businesses across Greater Sacramento.";
 
@@ -459,11 +470,44 @@ export const areas = [
 export const serviceAreas = areas.map((a) => a.name);
 
 /**
- * Real customer reviews only. Paste them in like:
- *   { quote: 'They show up every Tuesday...', name: 'Maria G.', detail: 'Homeowner, Gold River' }
- * Review sections switch to a carousel automatically once this list has entries.
+ * Real customer reviews. Pulled from the JCP Lawn Service Google Business listing.
+ * Review sections switch to a carousel automatically.
+ * To add more: copy a block, paste it below, and update the fields.
  */
-export const testimonials = [];
+export const testimonials = [
+  {
+    quote:
+      'JCP Landscaping was great and affordable! I recently used Carlos and his crew to do some clean up at a listing that I have. He was very affordable and also suggested additional services that helped spruce up the place. I will absolutely be using JCP for my future landscaping needs.',
+    name: 'Mallory Setzer Fraioli',
+    detail: 'Google review',
+    rating: 5,
+  },
+  {
+    quote:
+      'I hired JCP to clean up my front and back yard after buying a house and was really pleased with the work. They did an excellent job and were affordable.',
+    name: 'Daniel',
+    detail: 'Google review',
+    rating: 5,
+  },
+  {
+    quote: 'They did amazing!! Very quick to respond, easy to schedule, and are very fast, hard workers! Highly recommend!!',
+    name: 'Colleen Gardner',
+    detail: 'Google review',
+    rating: 5,
+  },
+  {
+    quote: 'Excellent work. Appreciate that Carlos checked in during the job to confirm we were on the same page. Will be calling him again next time!',
+    name: 'Melanie Rowe',
+    detail: 'Google review',
+    rating: 5,
+  },
+  {
+    quote: 'Jared came out to install a drip line in my backyard. He did a great job, was courteous, and left everything clean.',
+    name: 'Summer',
+    detail: 'Google review',
+    rating: 4,
+  },
+];
 
 /* ── Contact ──────────────────────────────────────────────── */
 
