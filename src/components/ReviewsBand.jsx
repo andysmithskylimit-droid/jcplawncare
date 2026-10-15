@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import { company, reviewStats, testimonials } from '../data/content';
+import { Link } from '../lib/router';
 import ButtonLabel from './ButtonLabel';
 
-function Stars({ n = 5 }) {
+export function Stars({ n = 5 }) {
   return (
-    <span className="reviews__stars" aria-label={`${n} out of 5 stars`}>
+    <span className="reviews__stars" role="img" aria-label={`${n} out of 5 stars`}>
       {Array.from({ length: 5 }).map((_, i) => (
         <svg key={i} viewBox="0 0 20 20" aria-hidden="true" className={i < n ? 'is-on' : ''}>
           <path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.2 1 5.8L10 15l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z" />
@@ -15,7 +16,7 @@ function Stars({ n = 5 }) {
 }
 
 /* Facebook reviews are recommend / don't recommend, with no star rating */
-function Recommends() {
+export function Recommends() {
   return (
     <span className="reviews__recommends">
       <svg viewBox="0 0 20 20" aria-hidden="true">
@@ -26,6 +27,11 @@ function Recommends() {
   );
 }
 
+/** Stars for Google reviews, a "Recommends" badge for Facebook ones. */
+export function ReviewBadge({ review }) {
+  return review.source === 'facebook' ? <Recommends /> : <Stars n={review.rating || 5} />;
+}
+
 function Carousel() {
   const [i, setI] = useState(0);
   if (!testimonials.length) return null;
@@ -33,7 +39,7 @@ function Carousel() {
   const n = testimonials.length;
   return (
     <figure className="reviews__card">
-      {t.source === 'facebook' ? <Recommends /> : <Stars n={t.rating || 5} />}
+      <ReviewBadge review={t} />
       <blockquote className="reviews__quote">{t.quote}</blockquote>
       <figcaption className="reviews__by">
         <span className="reviews__name">{t.name}</span>
@@ -70,15 +76,26 @@ export default function ReviewsBand() {
               Facebook page, where {reviewStats.facebookRecommendPercent}% of reviewers recommend us.
             </p>
             <div className="reviews__actions">
-              <a className="btn btn--dark" href={company.mapsLink} target="_blank" rel="noopener noreferrer">
-                <ButtonLabel>Read our Google reviews</ButtonLabel>
+              <Link to="/reviews" className="btn btn--dark">
+                <ButtonLabel>See all {testimonials.length} reviews</ButtonLabel>
+              </Link>
+            </div>
+            <p className="reviews__sources">
+              Or read them on{' '}
+              <a href={company.mapsLink} target="_blank" rel="noopener noreferrer">
+                Google
               </a>
               {company.facebookLink && (
-                <a className="btn btn--dark" href={company.facebookLink} target="_blank" rel="noopener noreferrer">
-                  <ButtonLabel>Facebook reviews</ButtonLabel>
-                </a>
+                <>
+                  {' '}
+                  and{' '}
+                  <a href={company.facebookLink} target="_blank" rel="noopener noreferrer">
+                    Facebook
+                  </a>
+                </>
               )}
-            </div>
+              .
+            </p>
           </div>
           <Carousel />
         </div>

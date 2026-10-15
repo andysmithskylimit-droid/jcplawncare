@@ -56,6 +56,13 @@ export const routes = [
       'Check your ZIP code and see the towns JCP Lawn Service covers across Greater Sacramento, from our base in Rancho Cordova.',
   },
   {
+    path: '/reviews',
+    name: 'Reviews',
+    title: 'Customer Reviews & Testimonials | JCP Lawn Service, Rancho Cordova',
+    description:
+      'Read what homeowners across Greater Sacramento say about JCP Lawn Service. Real Google and Facebook reviews: 96% of Facebook reviewers recommend us.',
+  },
+  {
     path: '/contact',
     name: 'Contact',
     title: 'Get a Lawn Care Quote | Contact JCP Lawn Service, Rancho Cordova',

@@ -27,6 +27,7 @@ export const pageHeroPhotos = {
   '/our-work': 136,
   '/lawn-guide': 114,
   '/service-area': 152,
+  '/reviews': 115,
   notFound: 3,
 };
 
